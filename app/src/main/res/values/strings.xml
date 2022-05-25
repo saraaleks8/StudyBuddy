@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">StudyBuddy</string>
+    <string name="app_motto">For measurable success</string>
+    <string name="user_name">name</string>
+    <string name="user_surname">surname</string>
+    <string name="user_profession">profession</string>
+    <string name="user_email">email</string>
+    <string name="user_password">password</string>
+    <string name="user_confirm_password">confirm password</string>
+    <string name="register_button">register</string>
 </resources>
