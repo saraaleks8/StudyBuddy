@@ -133,22 +133,23 @@
         />
 
     <!--  Register Button -->
+
+    <!--    Progress Bar    -->
     <Button
         android:id="@+id/registerButton"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginTop="520dp"
+        android:layout_marginTop="476dp"
         android:backgroundTint="@color/black"
         android:text="@string/register_button"
         android:textColor="#ffffff"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/banner"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/banner" />
 
-    <!--    Progress Bar    -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"

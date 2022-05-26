@@ -16,14 +16,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //registerButton, change it to the name of the "register" in sign in
-        register = (TextView) findViewById(R.id.registerButton);
+        register = (TextView) findViewById(R.id.register);
         register.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.registerButton:
+            case R.id.register:
                 startActivity(new Intent(this, RegisterUser.class));
                 break;
         }
