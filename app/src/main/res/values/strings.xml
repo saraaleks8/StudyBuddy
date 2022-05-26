@@ -8,4 +8,7 @@
     <string name="user_password">password</string>
     <string name="user_confirm_password">confirm password</string>
     <string name="register_button">register</string>
+    <string name="login_button">LOGIN</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="register_button2">Register</string>
 </resources>
