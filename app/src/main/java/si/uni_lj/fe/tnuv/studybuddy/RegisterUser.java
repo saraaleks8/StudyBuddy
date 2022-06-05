@@ -15,9 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener{
@@ -136,32 +139,31 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                         if(task.isSuccessful()){
                             User user = new User(name, surname, profession, email);
 
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            String userId = mAuth.getCurrentUser().getUid();
+                            Database.get()
+                                    .child("Users")
+                                    .child(userId)
 //                                    check if the data has been insterted into the database or not, always good practice
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-//                                  if the user has been registered and his data has been inserted to the database show a notification that user has been registered
-                                    if(task.isSuccessful()){
-//                                        Log.d("MyTask","Successful");
-                                        Toast.makeText(RegisterUser.this, "User has been registered successfully", Toast.LENGTH_LONG).show();
-                                        progressBar.setVisibility(View.GONE);
-//                                        redirect to login layout!
-                                    } else {
-                                        Toast.makeText(RegisterUser.this,"Failed to register user. Try again!", Toast.LENGTH_LONG).show();
-                                        progressBar.setVisibility(View.GONE);
-                                    }
+                                public void onSuccess(Void aVoid) {
+                                    progressBar.setVisibility(View.GONE);
+                                    Toast.makeText(getApplicationContext(),"Success!",Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    progressBar.setVisibility(View.GONE);
+                                    Toast.makeText(getApplicationContext(),"Fail!",Toast.LENGTH_SHORT).show();
+                                    Log.e("Error", e.getMessage());
                                 }
                             });
 
                         } else {
-                            Toast.makeText(RegisterUser.this,"Failed to register user.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegisterUser.this,"Failed to register user.", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     }
                 });
-
-
     }
 }
