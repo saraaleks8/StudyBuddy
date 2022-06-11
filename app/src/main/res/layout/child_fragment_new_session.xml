@@ -1,11 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!--    Set New Session Title -->
     <TextView
+        android:id="@+id/newSessionTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="new session child"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/newSessionTitle"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         />
+
+    <!--  Task type -->
+    <TextView
+        android:id="@+id/taskTypeTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/card_bg_top"
+        android:text="Task type"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newSessionTitle"
+        />
+    <EditText
+        android:id="@+id/taskType"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/card_bg_bottom"
+        android:hint="Study"
+        android:inputType="text"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskTypeTitle"
+        />
+
+    <!--  Intervals -->
+    <TextView
+        android:id="@+id/intervalTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="230dp"
+        android:layout_marginLeft="30dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/card_bg_top"
+        android:text="Intervals"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskType"
+        />
+    <EditText
+        android:id="@+id/interval"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/card_bg_bottom"
+        android:hint="5"
+        android:inputType="number"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/length"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/intervalTitle" />
+
+    <!--  Length  -->
+    <TextView
+        android:id="@+id/lengthTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="230dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/card_bg_top"
+        android:text="Length"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskType"
+        />
+    <EditText
+        android:id="@+id/length"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/card_bg_bottom"
+        android:hint="2h"
+        android:inputType="time"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/interval"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/lengthTitle" />
+
+<!--Spinner-->
+    <com.nestoleh.bottomsheetspinner.BottomSheetSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/interval"
+        tools:ignore="MissingConstraints" />
+
+    <!--   Slider  -->
+    <com.google.android.material.slider.Slider
+        android:id="@+id/focusBreakSlider"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/card_bg_top"
+        app:trackColor="@color/cardview_dark_background"
+        app:thumbColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/length"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <!--  Include Longer Break -->
+    <CheckedTextView
+        android:id="@+id/longerBreakCheckMark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/card_bg_top"
+        android:text="@string/longer_break_checkmark"
+        android:textSize="20dp"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/focusBreakSlider"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/longerBreak"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:paddingLeft="15dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/card_bg_bottom"
+        android:hint="Gardening"
+        android:inputType="time"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/longerBreakCheckMark"
+        />
+
+    <!--  Challenge a friend -->
+    <CheckedTextView
+        android:id="@+id/challengeFriendCheckbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/card_bg_top"
+        android:text="@string/challenge_friend_checkbox"
+        android:textSize="20dp"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/longerBreak"
+        />
+    <EditText
+        android:id="@+id/challengeFriend"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:paddingLeft="15dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/card_bg_bottom"
+        android:hint="Mirko Markocevic"
+        android:inputType="time"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/challengeFriendCheckbox"
+        />
+
+    <!--    Next Button    -->
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="30dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/next_button"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/challengeFriend" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

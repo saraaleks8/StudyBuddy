@@ -11,4 +11,13 @@
     <string name="login_button">LOGIN</string>
     <string name="forgot_password">Forgot your password?</string>
     <string name="register_button2">Register</string>
+    <string name="newSessionTitle">Start New Session</string>
+    <string name="session_label">Label</string>
+    <string name="number_of_sessions">Number of sessions</string>
+    <string name="length_of_session">Length of one session</string>
+    <string name="focus_time">Focus</string>
+    <string name="break_time">Break</string>
+    <string name="next_button">Next</string>
+    <string name="longer_break_checkmark">Include longer break</string>
+    <string name="challenge_friend_checkbox">Challenge a friend</string>
 </resources>
