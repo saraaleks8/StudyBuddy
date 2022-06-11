@@ -4,7 +4,7 @@
 
     <!-- View background color -->
     <solid
-        android:color="@color/text_hint_grey" >
+        android:color="@color/grey_card" >
     </solid>
 
     <!-- View border color and width -->
