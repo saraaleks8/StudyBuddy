@@ -5,9 +5,11 @@
     <item
         android:id="@+id/profileFragment"
         android:title="Profile"
+        app:labelVisibilityMode="unlabeled"
         android:icon="@drawable/ic_baseline_person_24"/>
     <item
         android:id="@+id/focusFragment"
         android:title="Focus"
+        app:labelVisibilityMode="unlabeled"
         android:icon="@drawable/ic_baseline_center_focus_strong_24"/>
 </menu>

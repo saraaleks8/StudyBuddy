@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class FocusActivity extends AppCompatActivity {
 
@@ -20,6 +21,8 @@ public class FocusActivity extends AppCompatActivity {
         setContentView(R.layout.activity_focus);
         changeFragment(profileFragment);
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
+        bottomNav.setLabelVisibilityMode(NavigationBarView.LABEL_VISIBILITY_UNLABELED);
+        bottomNav.setItemIconSize(74);
 
         bottomNav.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
