@@ -1,12 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:background="@color/black_bg">
+    <!--    Set New Session Title -->
     <TextView
+        android:id="@+id/breakPlanningTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="break plan child"
-        />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/nexa_bold"
+        android:text="Break Planning"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--  Challenge a friend -->
+    <CheckedTextView
+        android:id="@+id/breakCheckbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/card_bg_top"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        android:elevation="2dp"
+        android:fontFamily="@font/nexa_regular"
+        android:gravity="bottom"
+        android:paddingStart="25dp"
+        android:paddingTop="20dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="3dp"
+        android:text="Break 1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/breakPlanningTitle" />
+
+    <EditText
+        android:id="@+id/challengeFriend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/card_bg_bottom"
+        android:elevation="2dp"
+        android:fontFamily="@font/nexa_light"
+        android:hint="Lemonade"
+        android:inputType="textPersonName"
+        android:paddingStart="25dp"
+        android:paddingBottom="7dp"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/breakCheckbox" />
+
+    <!--    Previous Button    -->
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginStart="20dp"
+        android:elevation="2dp"
+        android:fontFamily="@font/nexa_bold"
+        android:text="Back"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/breakPlanningTitle" />
+
+    <!--    Next Button    -->
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginEnd="20dp"
+        android:elevation="2dp"
+        android:fontFamily="@font/nexa_bold"
+        android:text="@string/next_button"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@id/backButton"
+        app:layout_constraintTop_toBottomOf="@+id/breakPlanningTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
