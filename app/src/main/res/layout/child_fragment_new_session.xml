@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="225dp"
+        android:layout_marginEnd="22dp"
         android:background="@drawable/card_bg_top"
         android:elevation="2dp"
         android:fontFamily="@font/nexa_regular"
@@ -79,7 +79,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/lengthTitle"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskType" />
 
     <EditText
@@ -87,7 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="225dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/card_bg_bottom"
         android:elevation="2dp"
         android:fontFamily="@font/nexa_light"
@@ -96,9 +96,8 @@
         android:paddingStart="25dp"
         android:paddingBottom="7dp"
         android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/length"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/intervalTitle" />
 
     <!--  Length  -->
@@ -106,7 +105,7 @@
         android:id="@+id/lengthTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="215dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/card_bg_top"
@@ -120,25 +119,57 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskType" />
+        app:layout_constraintTop_toBottomOf="@+id/interval" />
 
     <EditText
-        android:id="@+id/length"
+        android:id="@+id/lengthHour"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="215dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/card_bg_bottom"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="230dp"
+        android:background="@drawable/card_bg_bottom_left"
         android:elevation="2dp"
         android:fontFamily="@font/nexa_light"
-        android:hint="2:00"
-        android:inputType="time"
+        android:hint="02"
+        android:inputType="number"
         android:paddingStart="25dp"
         android:paddingBottom="7dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/interval"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lengthTitle" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:elevation="2dp"
+        android:text=":"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:background="@color/grey_card"
+        app:layout_constraintEnd_toStartOf="@id/lengthMinute"
+        app:layout_constraintStart_toEndOf="@id/lengthHour"
+        app:layout_constraintTop_toBottomOf="@+id/lengthTitle" />
+
+    <EditText
+        android:id="@+id/lengthMinute"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="220dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/card_bg_bottom_right"
+        android:elevation="2dp"
+        android:fontFamily="@font/nexa_light"
+        android:hint="00"
+        android:inputType="number"
+        android:paddingStart="25dp"
+        android:paddingBottom="7dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lengthTitle" />
 
     <!--Spinner-->
@@ -156,100 +187,140 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/card_bg_full"
-        android:elevation="3dp"
+        android:background="@drawable/card_bg_top"
+        android:elevation="2dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/length"
+        app:layout_constraintTop_toBottomOf="@id/lengthMinute"
         app:thumbColor="@color/black_bg"
         app:trackColor="@color/cardview_dark_background" />
 
-    <!--  Include Longer Break -->
-    <CheckedTextView
-        android:id="@+id/longerBreakCheckMark"
+    <TextView
+        android:id="@+id/focusTimeInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/card_bg_top"
-        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-        android:elevation="2dp"
-        android:fontFamily="@font/nexa_regular"
-        android:gravity="bottom"
-        android:paddingStart="25dp"
-        android:paddingTop="20dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="3dp"
-        android:text="@string/longer_break_checkmark"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/focusBreakSlider"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/longerBreak"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/card_bg_bottom"
+        android:layout_marginEnd="210dp"
+        android:background="@drawable/card_bg_bottom_left"
         android:elevation="2dp"
         android:fontFamily="@font/nexa_light"
-        android:hint="Gardening"
-        android:inputType="time"
         android:paddingStart="25dp"
-        android:paddingBottom="7dp"
-        android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/longerBreakCheckMark" />
+        android:paddingBottom="15dp"
+        android:text="Focus Time: "
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/grey_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/breakTimeInfo"
+        app:layout_constraintTop_toBottomOf="@+id/focusBreakSlider" />
+
+    <TextView
+        android:id="@+id/breakTimeInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/card_bg_bottom_right"
+        android:elevation="2dp"
+        android:fontFamily="@font/nexa_light"
+        android:paddingStart="25dp"
+        android:paddingBottom="15dp"
+        android:paddingEnd="25dp"
+        android:text="Length: "
+        android:textAlignment="textEnd"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/grey_icon"
+        app:layout_constraintStart_toEndOf="@id/focusTimeInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/focusBreakSlider" />
+
+    <!--  Include Longer Break -->
+<!--    <CheckedTextView-->
+<!--        android:id="@+id/longerBreakCheckMark"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:background="@drawable/card_bg_top"-->
+<!--        android:checkMark="?android:attr/listChoiceIndicatorMultiple"-->
+<!--        android:elevation="2dp"-->
+<!--        android:fontFamily="@font/nexa_regular"-->
+<!--        android:gravity="bottom"-->
+<!--        android:paddingStart="25dp"-->
+<!--        android:paddingTop="20dp"-->
+<!--        android:paddingRight="15dp"-->
+<!--        android:paddingBottom="3dp"-->
+<!--        android:text="@string/longer_break_checkmark"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/focusBreakSlider"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/longerBreak"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="0dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:background="@drawable/card_bg_bottom"-->
+<!--        android:elevation="2dp"-->
+<!--        android:fontFamily="@font/nexa_light"-->
+<!--        android:hint="Gardening"-->
+<!--        android:inputType="time"-->
+<!--        android:paddingStart="25dp"-->
+<!--        android:paddingBottom="7dp"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/longerBreakCheckMark" />-->
 
     <!--  Challenge a friend -->
-    <CheckedTextView
-        android:id="@+id/challengeFriendCheckbox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/card_bg_top"
-        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-        android:elevation="2dp"
-        android:fontFamily="@font/nexa_regular"
-        android:gravity="bottom"
-        android:paddingStart="25dp"
-        android:paddingTop="20dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="3dp"
-        android:text="@string/challenge_friend_checkbox"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/longerBreak" />
+<!--    <CheckedTextView-->
+<!--        android:id="@+id/challengeFriendCheckbox"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:background="@drawable/card_bg_top"-->
+<!--        android:checkMark="?android:attr/listChoiceIndicatorMultiple"-->
+<!--        android:elevation="2dp"-->
+<!--        android:fontFamily="@font/nexa_regular"-->
+<!--        android:gravity="bottom"-->
+<!--        android:paddingStart="25dp"-->
+<!--        android:paddingTop="20dp"-->
+<!--        android:paddingRight="15dp"-->
+<!--        android:paddingBottom="3dp"-->
+<!--        android:text="@string/challenge_friend_checkbox"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/longerBreak" />-->
 
-    <EditText
-        android:id="@+id/challengeFriend"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/card_bg_bottom"
-        android:elevation="2dp"
-        android:fontFamily="@font/nexa_light"
-        android:hint="Mirko Markocevic"
-        android:inputType="textPersonName"
-        android:paddingStart="25dp"
-        android:paddingBottom="7dp"
-        android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/challengeFriendCheckbox" />
+<!--    <EditText-->
+<!--        android:id="@+id/challengeFriend"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="0dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:background="@drawable/card_bg_bottom"-->
+<!--        android:elevation="2dp"-->
+<!--        android:fontFamily="@font/nexa_light"-->
+<!--        android:hint="Mirko Markocevic"-->
+<!--        android:inputType="textPersonName"-->
+<!--        android:paddingStart="25dp"-->
+<!--        android:paddingBottom="7dp"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/challengeFriendCheckbox" />-->
 
     <!--    or a SLIDE icon ???     -->
     <!--    Next Button    -->

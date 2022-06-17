@@ -30,6 +30,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
     private ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
+    private DatabaseReference mRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_register_user);
 
         mAuth = FirebaseAuth.getInstance();
+//        mRef = mAuth.getReference("Users");
 
         banner = (TextView) findViewById(R.id.banner);
         banner.setOnClickListener(this);
@@ -137,6 +139,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+
                             User user = new User(name, surname, profession, email);
 
                             String userId = mAuth.getCurrentUser().getUid();
