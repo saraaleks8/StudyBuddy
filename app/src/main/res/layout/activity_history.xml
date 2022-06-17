@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_bg">
+
+    <!-- History of the sessions -->
+    <TextView
+        android:id="@+id/history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/nexa_bold"
+        android:text="@string/history"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--  Session 1 -->
+
+    <TextView
+        android:id="@+id/session1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/card_bg_top"
+        android:elevation="2dp"
+        android:fontFamily="@font/nexa_regular"
+        android:paddingStart="25dp"
+        android:layout_marginHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="3dp"
+        android:text="@string/session1_title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/history" />
+
+    <TextView
+        android:id="@+id/length"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/grey_card"
+        android:elevation="2dp"
+        android:fontFamily="@font/nexa_light"
+        android:text="@string/length"
+        android:paddingStart="25dp"
+        android:paddingBottom="7dp"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/session1" />
+
+    <TextView
+        android:id="@+id/intervals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/grey_card"
+        android:elevation="2dp"
+        android:fontFamily="@font/nexa_light"
+        android:text="@string/intervals"
+        android:paddingStart="25dp"
+        android:paddingBottom="7dp"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/length" />
+
+    <TextView
+        android:id="@+id/includeLongerBreak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/grey_card"
+        android:elevation="2dp"
+        android:fontFamily="@font/nexa_light"
+        android:text="@string/includeLongerBreak"
+        android:paddingStart="25dp"
+        android:paddingBottom="7dp"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intervals" />
+
+    <TextView
+        android:id="@+id/challenegedFriend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/card_bg_bottom"
+        android:elevation="2dp"
+        android:fontFamily="@font/nexa_light"
+        android:text="@string/challenge_friend"
+        android:paddingStart="25dp"
+        android:paddingBottom="7dp"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/includeLongerBreak" />
+
+
+    <Button
+        android:id="@+id/odjava"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/more"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/challenegedFriend" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
