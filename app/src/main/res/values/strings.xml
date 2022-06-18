@@ -45,4 +45,5 @@
     <string name="includeLongerBreak">Longer break included: YES</string>
     <string name="challenge_friend">With: MIRKO MARKOCEVIC</string>
     <string name="more">MORE</string>
+    <string name="logOut">Log out</string>
 </resources>

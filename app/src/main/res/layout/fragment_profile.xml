@@ -241,7 +241,7 @@
         android:paddingBottom="7dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/interval"
+        app:layout_constraintLeft_toRightOf="@id/focusTime"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberSessionsTitle" />
 
@@ -305,10 +305,10 @@
         app:layout_constraintTop_toBottomOf="@+id/friend1" />
 
     <Button
-        android:id="@+id/odjava"
+        android:id="@+id/logOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/odjava"
+        android:text="@string/logOut"
         android:layout_marginRight="25dp"
         android:layout_marginTop="40dp"
         app:layout_constraintLeft_toLeftOf="parent"
