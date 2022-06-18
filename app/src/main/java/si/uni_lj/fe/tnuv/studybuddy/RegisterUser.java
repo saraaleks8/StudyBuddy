@@ -23,6 +23,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener{
 
     private TextView banner, registerButton;
@@ -76,6 +80,12 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         String confirmPassword = editTextConfirmPassword.getText().toString().trim();
+        HashMap<String, Sessions> sessions = new HashMap<>();
+
+
+//        sessions.put(Sessions.getId().toString(), new Sessions(0, 0, "")) ;
+        sessions.put(UUID.randomUUID().toString(), new Sessions(0, 0, "")) ;
+
 
         if(name.isEmpty()){
             editTextName.setError("Name is required!");
@@ -140,7 +150,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
 
-                            User user = new User(name, surname, profession, email);
+                            User user = new User(name, surname, profession, email, sessions);
 
 //                            String userId = mAuth.getCurrentUser().getUid();
                             FirebaseDatabase.getInstance().getReference("Users")

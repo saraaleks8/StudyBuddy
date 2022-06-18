@@ -1,11 +1,21 @@
 package si.uni_lj.fe.tnuv.studybuddy;
 
-public class Session {
+import java.util.HashMap;
+import java.util.UUID;
 
-    private Number intervals, focusTime;
+public class Sessions {
+
+//    private static UUID id;
+    private Integer intervals, focusTime;
     private String type;
 
-    public Session(){
+    public Sessions (){
+    }
+
+    public Sessions(Integer intervals, Integer focusTime, String type){
+        this.intervals = intervals;
+        this.focusTime = focusTime;
+        this.type = type;
     }
 
     public Number getIntervals(){
