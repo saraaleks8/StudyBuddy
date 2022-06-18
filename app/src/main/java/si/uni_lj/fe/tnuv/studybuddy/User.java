@@ -31,4 +31,20 @@ public class User {
         this.surname = surname;
     }
 
+    public String getProfession(){
+        return profession;
+    }
+
+    public void setProfession(){
+        this.profession = profession;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public void setEmail(){
+        this.email = email;
+    }
+
 }

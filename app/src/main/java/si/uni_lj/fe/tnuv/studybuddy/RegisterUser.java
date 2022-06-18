@@ -142,10 +142,9 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
                             User user = new User(name, surname, profession, email);
 
-                            String userId = mAuth.getCurrentUser().getUid();
-                            Database.get()
-                                    .child("Users")
-                                    .child(userId)
+//                            String userId = mAuth.getCurrentUser().getUid();
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
 //                                    check if the data has been insterted into the database or not, always good practice
                                     .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
