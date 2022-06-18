@@ -2,7 +2,7 @@ package si.uni_lj.fe.tnuv.studybuddy;
 
 public class User {
 
-    public String name, surname, profession, email;
+    private String name, surname, profession, email;
 
     public User(){
 
@@ -13,6 +13,22 @@ public class User {
         this.surname = surname;
         this.profession = profession;
         this.email = email;
-
     }
+
+    public String getName(){
+        return name;
+    }
+
+    public void setName(){
+        this.name = name;
+    }
+
+    public String getSurname(){
+        return surname;
+    }
+
+    public void setSurname(){
+        this.surname = surname;
+    }
+
 }
