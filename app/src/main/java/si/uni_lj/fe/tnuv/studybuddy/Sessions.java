@@ -1,6 +1,9 @@
 package si.uni_lj.fe.tnuv.studybuddy;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class Sessions {
@@ -8,14 +11,16 @@ public class Sessions {
 //    private static UUID id;
     private Integer intervals, focusTime;
     private String type;
+    private Map time;
 
     public Sessions (){
     }
 
-    public Sessions(Integer intervals, Integer focusTime, String type){
+    public Sessions(Integer intervals, Integer focusTime, String type, Map time){
         this.intervals = intervals;
         this.focusTime = focusTime;
         this.type = type;
+        this.time = time;
     }
 
     public Number getIntervals(){
@@ -41,4 +46,13 @@ public class Sessions {
     public void setType(){
         this.type = type;
     }
+
+    public Map getTime(){
+        return time;
+    }
+
+    public void setTime(){
+        this.time = time;
+    }
+
 }

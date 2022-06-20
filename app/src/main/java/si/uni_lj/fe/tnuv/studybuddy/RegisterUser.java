@@ -22,6 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -86,7 +87,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
 
 //        sessions.put(Sessions.getId().toString(), new Sessions(0, 0, "")) ;
-        sessions.put(UUID.randomUUID().toString(), new Sessions(0, 0, "")) ;
+        sessions.put(UUID.randomUUID().toString(), new Sessions(0, 0, "", ServerValue.TIMESTAMP)) ;
 
 
         if(name.isEmpty()){
