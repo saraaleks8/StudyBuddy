@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     if(user.isEmailVerified()){
                         //redirect to user profile
+                        //startActivity(new Intent(MainActivity.this, FocusActivity.class));
                         startActivity(new Intent(MainActivity.this, FocusActivity.class));
                     }else{
                         user.sendEmailVerification();

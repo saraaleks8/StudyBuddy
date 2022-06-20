@@ -46,4 +46,7 @@
     <string name="challenge_friend">With: MIRKO MARKOCEVIC</string>
     <string name="more">MORE</string>
     <string name="logOut">Log out</string>
+    <string name="fullName">Petra Kuralt</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
