@@ -108,6 +108,7 @@ public class NewSessionChildFragment extends Fragment implements View.OnClickLis
                 bottomSheetDialog.show();
             }
         });
+
         intervalNumber = (EditText) view.findViewById(R.id.interval);
         lengthHours = (EditText) view.findViewById(R.id.lengthHour);
         lengthMinutes = (EditText) view.findViewById(R.id.lengthMinute);
@@ -226,22 +227,20 @@ public class NewSessionChildFragment extends Fragment implements View.OnClickLis
 
     private void goToBreakPlanning() {
 
-        String task = taskType.getText().toString().trim(); //done
+        String task = taskType.getText().toString().trim();
         String intervalString = intervalNumber.getText().toString().trim();
-        int interval = Integer.parseInt(intervalString); //done
-
-        Log.i("TASK TYPE", "Task Type: " + task);
-        Log.i("INTERVAL", "Interval String: " + intervalString);
-        Log.i("INTERVAL", "Interval Number: " + interval);
-
-        //focus time
+        int interval = Integer.parseInt(intervalString);
         String hoursString = lengthHours.getText().toString().trim();
         int hours = Integer.parseInt(hoursString); //of a whole interval
-
         String minutesString = lengthMinutes.getText().toString().trim();
         int minutes = Integer.parseInt(minutesString); //of a whole interval
-
         int focusTime = (int) focusBreakSlider.getValue(); //in minutes
+
+        SessionConfiguration sessionConfiguration = SessionConfiguration.getInstance();
+        sessionConfiguration.init(task, interval,hours, minutes, "s", "m");
+
+//        SessionConfiguration sessionConfiguration1 = SessionConfiguration.getInstance();
+//        Log.i("SC","sessionConfiguration1 " + sessionConfiguration1.taskType);
 
         if (task.isEmpty()) {
             taskType.setError("Task type is required!");
@@ -272,19 +271,10 @@ public class NewSessionChildFragment extends Fragment implements View.OnClickLis
         //TODO some waiting time?
 
         Map<String, Object> sessions = new HashMap<>();
-//        Map<String,Object> updates = new HashMap<>();
-//
-//        updates.put("timestamp", new Timestamp(new Date()));
         sessions.put(UUID.randomUUID().toString(), new Sessions(interval, focusTime, task, new Date().getTime()));
-
-//        DatabaseReference produitRef = reference.child(refernce).child("produit");
-//        produitRef.updateChildren(values);
 
         mRef = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("sessions");
         mRef.updateChildren(sessions);
-
-//        Fragment breakPlanning = new BreakPlanningChildFragment();
-//        getChildFragmentManager().beginTransaction().replace(R.id.childFragmentContainerFocus, breakPlanning).addToBackStack(null).commitAllowingStateLoss();
 
     }
 
