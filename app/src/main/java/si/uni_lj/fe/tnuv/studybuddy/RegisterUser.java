@@ -80,6 +80,8 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         String confirmPassword = editTextConfirmPassword.getText().toString().trim();
+
+        //TODO check if its just Map or HashMap
         HashMap<String, Sessions> sessions = new HashMap<>();
 
 
