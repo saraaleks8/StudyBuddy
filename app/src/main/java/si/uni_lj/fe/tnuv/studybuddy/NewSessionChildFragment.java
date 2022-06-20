@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.slider.Slider;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,6 +29,7 @@ import com.google.firebase.database.ServerValue;
 
 import org.w3c.dom.Text;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -270,7 +272,10 @@ public class NewSessionChildFragment extends Fragment implements View.OnClickLis
         //TODO some waiting time?
 
         Map<String, Object> sessions = new HashMap<>();
-        sessions.put(UUID.randomUUID().toString(), new Sessions(interval, focusTime, task, ServerValue.TIMESTAMP));
+//        Map<String,Object> updates = new HashMap<>();
+//
+//        updates.put("timestamp", new Timestamp(new Date()));
+        sessions.put(UUID.randomUUID().toString(), new Sessions(interval, focusTime, task, new Date().getTime()));
 
 //        DatabaseReference produitRef = reference.child(refernce).child("produit");
 //        produitRef.updateChildren(values);

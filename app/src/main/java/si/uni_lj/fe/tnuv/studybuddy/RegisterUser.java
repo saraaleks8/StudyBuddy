@@ -18,12 +18,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
+import com.google.firebase.firestore.FieldValue;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -84,10 +87,13 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
         //TODO check if its just Map or HashMap
         HashMap<String, Sessions> sessions = new HashMap<>();
+//        Map<String,Object> updates = new HashMap<>();
+//
+//        updates.put("timestamp", new Timestamp(new Date()));
 
 
 //        sessions.put(Sessions.getId().toString(), new Sessions(0, 0, "")) ;
-        sessions.put(UUID.randomUUID().toString(), new Sessions(0, 0, "", ServerValue.TIMESTAMP)) ;
+        sessions.put(UUID.randomUUID().toString(), new Sessions(0, 0, "", new Date().getTime()));
 
 
         if(name.isEmpty()){

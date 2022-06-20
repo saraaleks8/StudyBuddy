@@ -11,12 +11,12 @@ public class Sessions {
 //    private static UUID id;
     private Integer intervals, focusTime;
     private String type;
-    private Map time;
+    private long time;
 
     public Sessions (){
     }
 
-    public Sessions(Integer intervals, Integer focusTime, String type, Map time){
+    public Sessions(Integer intervals, Integer focusTime, String type, long time){
         this.intervals = intervals;
         this.focusTime = focusTime;
         this.type = type;
@@ -47,7 +47,7 @@ public class Sessions {
         this.type = type;
     }
 
-    public Map getTime(){
+    public long getTime(){
         return time;
     }
 

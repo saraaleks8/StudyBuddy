@@ -8,8 +8,6 @@ public class User {
     private String name, surname, profession, email;
     private HashMap<String, Sessions> sessions;
 
-//    HashMap<String, Session> Session
-
     public User(){
 
     }
