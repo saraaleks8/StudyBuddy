@@ -5,7 +5,7 @@
         <!--        last item on list is thrown on top      -->
         <shape
             android:shape="ring"
-            android:thicknessRatio="16"
+            android:thicknessRatio="56"
             android:useLevel="false">
             <solid android:color="@color/grey_icon" />
         </shape>

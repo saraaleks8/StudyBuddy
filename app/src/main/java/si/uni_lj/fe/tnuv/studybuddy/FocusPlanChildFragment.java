@@ -17,6 +17,8 @@ import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.w3c.dom.Text;
+
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
@@ -24,10 +26,10 @@ public class FocusPlanChildFragment extends Fragment {
 
     ProgressBar timerBar;
     CountDownTimer countDownTimer;
-    TextView timerText;
+    TextView timerText, taskTypeName;
     Button startTimer, pauseTimer, stopTimer;
     int i = 0;
-    //    int i = 0;
+
     int intervalsLeft;
     int focusLeft;
     int focusLength;
@@ -59,11 +61,11 @@ public class FocusPlanChildFragment extends Fragment {
         startTimer = (Button) view.findViewById(R.id.startTimer);
         pauseTimer = (Button) view.findViewById(R.id.pauseTimer);
         stopTimer = (Button) view.findViewById(R.id.stopTimer);
+        taskTypeName = (TextView) view.findViewById(R.id.taskTypeName);
 
         SessionConfiguration sessionConfiguration1 = SessionConfiguration.getInstance();
-        Log.i("SC", "sessionConfiguration1 " + sessionConfiguration1.taskType);
 
-        //TODO text view add type of task
+        taskTypeName.setText(sessionConfiguration1.taskType);
 
         intervalsLeft = sessionConfiguration1.intervalNumber;
         focusLeft = sessionConfiguration1.intervalNumber;
@@ -79,9 +81,8 @@ public class FocusPlanChildFragment extends Fragment {
         startTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(timerIsPaused){
+                if (timerIsPaused) {
                     timerIsPaused = false;
-                    Log.i("PAUSED","paused on (in play): "+paused);
                     setTimer(paused);
                 } else {
                     setTimer(focusLength);
@@ -89,7 +90,6 @@ public class FocusPlanChildFragment extends Fragment {
                 startTimer.setEnabled(false);
                 pauseTimer.setEnabled(true);
                 stopTimer.setEnabled(true);
-                Log.i("START TIMER","I came to start timer");
             }
         });
 
@@ -104,17 +104,17 @@ public class FocusPlanChildFragment extends Fragment {
                 int minutes = minutesPaused(timerText.getText().toString().trim(), 3, 5);
                 int seconds = minutesPaused(timerText.getText().toString().trim(), 6, 8);
                 paused = 0;
-                if(hours > 0){
+                if (hours > 0) {
                     paused += hours * 3600000;
                 }
-                if(minutes > 0){
+                if (minutes > 0) {
                     paused += minutes * 60000;
                 }
-                if(seconds > 0){
+                if (seconds > 0) {
                     paused += seconds * 1000;
                 }
-                Log.i("PAUSED","paused on (in pause): "+paused);
-            countDownTimer.cancel();
+                Log.i("PAUSED", "paused on (in pause): " + paused);
+                countDownTimer.cancel();
             }
         });
 
@@ -124,7 +124,9 @@ public class FocusPlanChildFragment extends Fragment {
                 timerIsStopped = true;
                 startTimer.setEnabled(false);
                 pauseTimer.setEnabled(false);
+                stopTimer.setEnabled(false);
                 countDownTimer.cancel();
+                timerBar.setProgress(0);
                 timerText.setText("00:00:00");
             }
         });
@@ -134,21 +136,17 @@ public class FocusPlanChildFragment extends Fragment {
     private void setTimer(int timeLength) {
 
         int timeLengthUnchanged;
-        if(focus){
+        if (focus) {
             timeLengthUnchanged = focusLength;
         } else {
             timeLengthUnchanged = breakLength;
         }
 
-        //i = 0
-
-        Log.i("SET TIMER","I came to before setting up the countdown timer, this is how long: "+ timeLength);
 
         countDownTimer = new CountDownTimer(timeLength, 1000) {
 
             @Override
             public void onTick(long l) {
-//                timerText.setText("00:00:" + l / 1000);
 
                 long hour = (l / 3600000) % 24;
                 long min = (l / 60000) % 60;
@@ -163,23 +161,15 @@ public class FocusPlanChildFragment extends Fragment {
             @Override
             public void onFinish() {
                 if (intervalsLeft > 0) {
-                    if (focus && focusLeft>0) {
-                        Log.i("FINISH","Focus is set to : "+ focus);
+                    if (focus && focusLeft > 0) {
                         focus = false;
-                        Log.i("FINISH","Focus is set to : "+ focus);
-                        Log.i("FINISH","This is how many focses are left before -- : "+ focusLeft);
                         focusLeft--;
-                        Log.i("FINISH","This is how many focses are left after -- : "+ focusLeft);
-                        Log.i("FINISH","This is how many intervals are left before -- : "+ intervalsLeft);
                         intervalsLeft--;
-                        Log.i("FINISH","This is how many intervals are left after -- : "+ intervalsLeft);
                         i = 0;
                         setTimer(breakLength);
                     } else {
-                        Log.i("FINISH","This is how many breaks are left before -- : "+ breakLeft);
                         focus = true;
                         breakLeft--;
-                        Log.i("FINISH","This is how many breaks are left after -- : "+ breakLeft);
                         i = 0;
                         setTimer(focusLength);
                     }
@@ -187,22 +177,20 @@ public class FocusPlanChildFragment extends Fragment {
 
                 timerText.setText("Good job!");
                 //Do what you want
-//                i++;
-//                timerBar.setProgress(100);
             }
         };
         countDownTimer.start();
     }
 
-    private String modifyNumber(long number){
-        if (number < 10){
-            return "0"+number;
+    private String modifyNumber(long number) {
+        if (number < 10) {
+            return "0" + number;
         }
-        return number+"";
+        return number + "";
     }
 
-    private int minutesPaused(String str, int first, int last){
-        String time =  str.length() < 2 ? str : str.substring(first, last);
+    private int minutesPaused(String str, int first, int last) {
+        String time = str.length() < 2 ? str : str.substring(first, last);
         return Integer.parseInt(time);
     }
 }

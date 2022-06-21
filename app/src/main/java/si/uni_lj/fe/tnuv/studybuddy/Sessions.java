@@ -8,7 +8,6 @@ import java.util.UUID;
 
 public class Sessions {
 
-//    private static UUID id;
     private String type;
     private long time,intervals, focusTime;
 

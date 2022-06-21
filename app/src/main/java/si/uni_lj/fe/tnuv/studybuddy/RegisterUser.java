@@ -46,7 +46,6 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_register_user);
 
         mAuth = FirebaseAuth.getInstance();
-//        mRef = mAuth.getReference("Users");
 
         banner = (TextView) findViewById(R.id.banner);
         banner.setOnClickListener(this);
@@ -87,12 +86,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
         //TODO check if its just Map or HashMap
         HashMap<String, Sessions> sessions = new HashMap<>();
-//        Map<String,Object> updates = new HashMap<>();
-//
-//        updates.put("timestamp", new Timestamp(new Date()));
 
-
-//        sessions.put(Sessions.getId().toString(), new Sessions(0, 0, "")) ;
         sessions.put(UUID.randomUUID().toString(), new Sessions(0, 0, "", new Date().getTime()));
 
 
@@ -145,8 +139,6 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         }
 
         if(!confirmPassword.equals(password)) {
-//            Log.e("MyTag", confirmPassword);
-//            Log.e("MyTag", password);
             editTextConfirmPassword.setError("Passwords need to match");
             editTextConfirmPassword.requestFocus();
             return;
@@ -161,7 +153,6 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
                             User user = new User(name, surname, profession, email, sessions);
 
-//                            String userId = mAuth.getCurrentUser().getUid();
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
 //                                    check if the data has been insterted into the database or not, always good practice

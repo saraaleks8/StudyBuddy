@@ -51,9 +51,6 @@ public class NewSessionChildFragment extends Fragment implements View.OnClickLis
     private TextView focusTimeInfo;
     private TextView breakTimeInfo;
 
-    private int focusTimeInterval;
-    private int breakTimeInterval;
-
     private FirebaseAuth mAuth;
     private DatabaseReference mRef;
 
@@ -136,71 +133,17 @@ public class NewSessionChildFragment extends Fragment implements View.OnClickLis
         lengthHours.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                Log.i("Erases", "erases before");
 
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-//                if(lengthHours.getText().toString().matches("")){
-//                    focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + 0);
-//                }
-//                if(lengthMinutes.getText().toString().matches("")){
-//                    focusBreakSlider.setValueTo(0 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                }
-//                focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//
-
-//                if(lengthHours.getText().toString().matches("")){
-//                    lengthHours.setText("0");
-//                }
-//                if(lengthMinutes.getText().toString().matches("")){
-//                    lengthMinutes.setText("0");
-//                }
-//                focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-
-
-//                if (charSequence.length() != 0) {
-//                    if (lengthMinutes.getText().toString().matches("")) {
-//                        lengthMinutes.setText("0");
-//                        focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60);
-//                        Log.i("0 HC ONLY HOURS", "hours to minutes: " + Integer.parseInt(lengthHours.getText().toString().trim()) * 60);
-//                    } else if (!lengthMinutes.getText().toString().matches("")) {
-//                        focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                        Log.i("0 HC ONLY HOURS", "hours to minutes: " + Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                    }
-//                } else {
-//                    lengthHours.setText("0");
-//                    Log.i("hours is empty", "");
-//                    if (lengthMinutes.getText().toString().matches("")) {
-//                        lengthMinutes.setText("0");
-//                    } else if (!lengthMinutes.getText().toString().matches("")) { //PROBLEM HERE
-//                        focusBreakSlider.setValueTo(Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                        Log.i("0 HC ONLY HOURS", "hours to minutes: " + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                    }
-//                }
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
                 changeSlider(editable.toString().trim(), lengthMinutes.getText().toString().trim());
-
-//               if (!lengthMinutes.getText().toString().matches("") && lengthHours.getText().toString().matches(""))
-//                {
-//                    //if minutes = 0, we cant let the set value to be 0
-//                    focusBreakSlider.setValueTo(0 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//
-//                } else if (lengthMinutes.getText().toString().matches("") && !lengthHours.getText().toString().matches(""))
-//                {
-//                    focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + 0);
-//                } else if (!lengthHours.getText().toString().matches("") && !lengthMinutes.getText().toString().matches(""))
-//                {
-//                    focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                }
-
-//                Log.i("EDITABLE", "Editable: "+ editable);
-//                Log.i("Erases", "erases after");
             }
         });
 
@@ -212,96 +155,11 @@ public class NewSessionChildFragment extends Fragment implements View.OnClickLis
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-//                if(!lengthHours.getText().toString().matches("") && lengthMinutes.getText().toString().matches("")){
-//                    if(lengthHours.getText().toString().matches("")){
-//                        focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + 0);
-//                    }
-//                    if(lengthMinutes.getText().toString().matches("")){
-//                        focusBreakSlider.setValueTo(0 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                    }
-//                    focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                }
-
-
-//                if(lengthHours.getText().toString().matches("")){
-//                    lengthHours.setText("0");
-//                }
-//                if(lengthMinutes.getText().toString().matches("")){
-//                    lengthMinutes.setText("0");
-//                }
-//                focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-
-//                if (charSequence.length() != 0) {
-//                    if(!lengthHours.getText().toString().matches("")){
-//                        focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                        Log.i("LENGTH MINUTES MATCHES", "minutes: " + Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                    } else {
-//                        focusBreakSlider.setValueTo(Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                       }
-//                } else {
-//                    lengthMinutes.setText("0");
-//                    if (lengthHours.getText().toString().matches("")) {
-//                    lengthHours.setText("0");
-//                    focusBreakSlider.setValueTo(60);
-//                } else if (!lengthHours.getText().toString().matches("")) { //PROBLEM HERE
-//                    focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60);
-//                }
-//                }
             }
-
-//             if (charSequence.length() != 0) {
-//                if (lengthMinutes.getText().toString().matches("")) {
-//                    lengthMinutes.setText("0");
-//                    focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60);
-//                    Log.i("0 HC ONLY HOURS", "hours to minutes: " + Integer.parseInt(lengthHours.getText().toString().trim()) * 60);
-//                } else if (!lengthMinutes.getText().toString().matches("")) {
-//                    focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                    Log.i("0 HC ONLY HOURS", "hours to minutes: " + Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                }
-//            } else {
-//                lengthHours.setText("0");
-//                Log.i("hours is empty", "");
-//                if (lengthMinutes.getText().toString().matches("")) {
-//                    lengthMinutes.setText("0");
-//                } else if (!lengthMinutes.getText().toString().matches("")) { //PROBLEM HERE
-//                    focusBreakSlider.setValueTo(Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                    Log.i("0 HC ONLY HOURS", "hours to minutes: " + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                }
-//            }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
                 changeSlider(lengthHours.getText().toString().trim(), editable.toString().trim());
-
-//                if (lengthHours.getText().toString().matches("") && lengthMinutes.getText().toString().matches(""))
-//                {
-//                    return;
-//                } else if (lengthHours.getText().toString().matches(""))
-//                {
-//                    focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + 0);
-//                } else if (lengthMinutes.getText().toString().matches(""))
-//                {
-//                    focusBreakSlider.setValueTo(0 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                } else
-//                {
-//                    focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                }
-
-
-//                if (lengthHours.getText().toString().matches("") && !lengthMinutes.getText().toString().matches(""))
-//                {
-//                    focusBreakSlider.setValueTo(0 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//
-//                } else if (lengthMinutes.getText().toString().matches("") && !lengthHours.getText().toString().matches(""))
-//                {
-//                    focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + 0);
-//                } else if (!lengthHours.getText().toString().matches("") && !lengthMinutes.getText().toString().matches(""))
-//                {
-//                    focusBreakSlider.setValueTo(Integer.parseInt(lengthHours.getText().toString().trim()) * 60 + Integer.parseInt(lengthMinutes.getText().toString().trim()));
-//                }
-
             }
         });
 
@@ -337,7 +195,6 @@ public class NewSessionChildFragment extends Fragment implements View.OnClickLis
 
         nextButton = (Button) view.findViewById(R.id.nextButton);
 
-        //try setOnClickListener(this) and do that separately
         nextButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -383,21 +240,36 @@ public class NewSessionChildFragment extends Fragment implements View.OnClickLis
             return;
         }
 
-        //TODO you have to make sure they dont put more than 24 hours
         if (hoursString.isEmpty()) {
             lengthHours.setError("Length of interval is required!");
             lengthHours.requestFocus();
             return;
         }
 
-        //TODO you have to make sure they dont put more than 60 min
+        if (Integer.parseInt(hoursString) < 0) {
+            lengthHours.setError("Value can't be negative");
+            lengthHours.requestFocus();
+            return;
+        }
+
         if (minutesString.isEmpty()) {
             lengthMinutes.setError("Length of interval is required!");
             lengthMinutes.requestFocus();
             return;
         }
 
-        //TODO some waiting time?
+        if (Integer.parseInt(minutesString )<0) {
+            lengthMinutes.setError("Value can't be negative");
+            lengthMinutes.requestFocus();
+            return;
+        }
+
+        if (Integer.parseInt(minutesString ) > 59) {
+            lengthMinutes.setError("That's more than 1h!");
+            lengthMinutes.requestFocus();
+            return;
+        }
+
 
         Map<String, Object> sessions = new HashMap<>();
         sessions.put(UUID.randomUUID().toString(), new Sessions(interval, focusTime, task, new Date().getTime()));

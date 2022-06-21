@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/black_bg"
     >
-<!--    android:background="@drawable/bottom_sheet_spinner_background"-->
 
     <!--    Set New Session Title -->
     <TextView
@@ -41,6 +40,7 @@
         android:text="Task type"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newSessionTitle" />
@@ -59,6 +59,7 @@
         android:paddingStart="25dp"
         android:paddingBottom="7dp"
         android:textSize="20sp"
+        android:textColor="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskTypeTitle" />
@@ -80,6 +81,7 @@
         android:text="Intervals"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskType" />
@@ -98,6 +100,7 @@
         android:paddingStart="25dp"
         android:paddingBottom="7dp"
         android:textSize="20sp"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/intervalTitle" />
@@ -119,6 +122,7 @@
         android:text="Length"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/interval" />
@@ -137,6 +141,7 @@
         android:paddingStart="25dp"
         android:paddingBottom="7dp"
         android:textSize="20sp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -169,6 +174,7 @@
         android:paddingStart="25dp"
         android:paddingBottom="7dp"
         android:textSize="20sp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -221,7 +227,7 @@
         android:text="Focus Time: "
         android:textSize="13sp"
         android:textStyle="bold"
-        android:textColor="@color/grey_icon"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/breakTimeInfo"
         app:layout_constraintTop_toBottomOf="@+id/focusBreakSlider" />
@@ -241,99 +247,11 @@
         android:textAlignment="textEnd"
         android:textSize="13sp"
         android:textStyle="bold"
-        android:textColor="@color/grey_icon"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/focusTimeInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/focusBreakSlider" />
 
-    <!--  Include Longer Break -->
-<!--    <CheckedTextView-->
-<!--        android:id="@+id/longerBreakCheckMark"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        android:background="@drawable/card_bg_top"-->
-<!--        android:checkMark="?android:attr/listChoiceIndicatorMultiple"-->
-<!--        android:elevation="2dp"-->
-<!--        android:fontFamily="@font/nexa_regular"-->
-<!--        android:gravity="bottom"-->
-<!--        android:paddingStart="25dp"-->
-<!--        android:paddingTop="20dp"-->
-<!--        android:paddingRight="15dp"-->
-<!--        android:paddingBottom="3dp"-->
-<!--        android:text="@string/longer_break_checkmark"-->
-<!--        android:textSize="20sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/focusBreakSlider"-->
-<!--        tools:ignore="MissingConstraints" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/longerBreak"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="0dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        android:background="@drawable/card_bg_bottom"-->
-<!--        android:elevation="2dp"-->
-<!--        android:fontFamily="@font/nexa_light"-->
-<!--        android:hint="Gardening"-->
-<!--        android:inputType="time"-->
-<!--        android:paddingStart="25dp"-->
-<!--        android:paddingBottom="7dp"-->
-<!--        android:textSize="20sp"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/longerBreakCheckMark" />-->
-
-    <!--  Challenge a friend -->
-<!--    <CheckedTextView-->
-<!--        android:id="@+id/challengeFriendCheckbox"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        android:background="@drawable/card_bg_top"-->
-<!--        android:checkMark="?android:attr/listChoiceIndicatorMultiple"-->
-<!--        android:elevation="2dp"-->
-<!--        android:fontFamily="@font/nexa_regular"-->
-<!--        android:gravity="bottom"-->
-<!--        android:paddingStart="25dp"-->
-<!--        android:paddingTop="20dp"-->
-<!--        android:paddingRight="15dp"-->
-<!--        android:paddingBottom="3dp"-->
-<!--        android:text="@string/challenge_friend_checkbox"-->
-<!--        android:textSize="20sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/longerBreak" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/challengeFriend"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="0dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        android:background="@drawable/card_bg_bottom"-->
-<!--        android:elevation="2dp"-->
-<!--        android:fontFamily="@font/nexa_light"-->
-<!--        android:hint="Mirko Markocevic"-->
-<!--        android:inputType="textPersonName"-->
-<!--        android:paddingStart="25dp"-->
-<!--        android:paddingBottom="7dp"-->
-<!--        android:textSize="20sp"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/challengeFriendCheckbox" />-->
-
-    <!--    or a SLIDE icon ???     -->
     <!--    Next Button    -->
     <Button
         android:id="@+id/nextButton"
@@ -346,6 +264,7 @@
         android:text="@string/next_button"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"

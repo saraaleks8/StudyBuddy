@@ -23,14 +23,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!--  Task type -->
+
     <TextView
         android:id="@+id/taskTypeTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_height="65dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/card_bg_full"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="200dp"
+        android:background="@drawable/card_bg_left"
         android:elevation="2dp"
         android:fontFamily="@font/nexa_regular"
         android:paddingStart="25dp"
@@ -38,10 +39,30 @@
         android:paddingBottom="20dp"
         android:text="Task type"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/focusPlanTitle" />
+
+    <TextView
+        android:id="@+id/taskTypeName"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/card_bg_right"
+        android:elevation="2dp"
+        android:fontFamily="@font/nexa_light"
+        android:paddingEnd="25dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:text="Task type"
+        android:textAlignment="textEnd"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toRightOf="@id/taskTypeTitle"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/focusPlanTitle" />
+
 
     <ProgressBar
         android:id="@+id/timerBar"
@@ -59,7 +80,7 @@
         android:id="@+id/timerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00:23:24"
+        android:text="00:00:00"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_marginTop="0dp"
 
@@ -71,8 +92,9 @@
     <Button
         android:id="@+id/startTimer"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:drawableBottom="@drawable/ic_baseline_play_arrow_24"
+        android:paddingTop="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +103,7 @@
     <Button
         android:id="@+id/pauseTimer"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:drawableBottom="@drawable/ic_baseline_pause_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/startTimer"
@@ -91,26 +113,11 @@
     <Button
         android:id="@+id/stopTimer"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:drawableBottom="@drawable/ic_baseline_stop_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/startTimer"
         app:layout_constraintTop_toBottomOf="@+id/timerBar" />
-
-    <!--    Previous Button    -->
-    <!--    <Button-->
-    <!--        android:id="@+id/backButton"-->
-    <!--        android:layout_width="100dp"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:layout_marginTop="550dp"-->
-    <!--        android:layout_marginStart="20dp"-->
-    <!--        android:elevation="2dp"-->
-    <!--        android:fontFamily="@font/nexa_bold"-->
-    <!--        android:text="Back"-->
-    <!--        android:textSize="16sp"-->
-    <!--        android:textStyle="bold"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/focusPlanTitle" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

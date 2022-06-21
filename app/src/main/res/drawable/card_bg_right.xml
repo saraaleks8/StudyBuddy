@@ -5,10 +5,11 @@
     <!-- View background color -->
     <solid
         android:color="@color/grey_card" >
+        shadow
     </solid>
-
     <!-- The radius makes the corners rounded -->
     <corners
-        android:bottomLeftRadius="30dp">
+        android:bottomRightRadius="30dp"
+        android:topRightRadius="30dp">
     </corners>
 </shape>
