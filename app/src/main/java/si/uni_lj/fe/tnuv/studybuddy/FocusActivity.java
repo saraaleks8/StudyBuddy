@@ -13,7 +13,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class FocusActivity extends AppCompatActivity {
+public class FocusActivity extends AppCompatActivity implements FocusNavigation {
+
 
     ProfileFragment profileFragment= new ProfileFragment();
     FocusFragment focusFragment = new FocusFragment();
@@ -41,7 +42,24 @@ public class FocusActivity extends AppCompatActivity {
         });
     }
 
+    //if you are there, you wont be able to do a back press, super on back press should not be called
+    @Override
+    public void onBackPressed() {
+        if(getSupportFragmentManager().getFragments().get(getSupportFragmentManager().getFragments().size()-1) instanceof FocusFragment){
+            FocusFragment fragment = (FocusFragment) getSupportFragmentManager().getFragments().get(getSupportFragmentManager().getFragments().size()-1);
+            if(fragment.getChildFragmentManager().getFragments().get(fragment.getChildFragmentManager().getFragments().size()-1) instanceof FocusPlanChildFragment){
+                return;
+            }
+        }
+        super.onBackPressed();
+    }
+
     private void changeFragment(Fragment fragment){
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragment).commitAllowingStateLoss();
+    }
+
+    @Override
+    public void changeChildFragment(Fragment fragment) {
+        focusFragment.changeFragment(fragment);
     }
 }

@@ -1,5 +1,6 @@
 package si.uni_lj.fe.tnuv.studybuddy;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -16,6 +17,9 @@ import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class FocusPlanChildFragment extends Fragment {
 
     ProgressBar timerBar;
@@ -23,6 +27,13 @@ public class FocusPlanChildFragment extends Fragment {
     TextView timerText;
     Button startTimer, pauseTimer, stopTimer;
     int i = 0;
+    //    int i = 0;
+    int intervalsLeft;
+    int focusLeft;
+    int focusLength;
+    int breakLeft;
+    int breakLength;
+    boolean focus;
 
 
     @Override
@@ -46,35 +57,106 @@ public class FocusPlanChildFragment extends Fragment {
         stopTimer = (Button) view.findViewById(R.id.stopTimer);
 
         SessionConfiguration sessionConfiguration1 = SessionConfiguration.getInstance();
-        Log.i("SC","sessionConfiguration1 " + sessionConfiguration1.taskType);
+        Log.i("SC", "sessionConfiguration1 " + sessionConfiguration1.taskType);
+
+        intervalsLeft = sessionConfiguration1.intervalNumber;
+        focusLeft = sessionConfiguration1.intervalNumber;
+        focusLength = sessionConfiguration1.focusTimeInterval * 60 * 1000; //*1000 cuz milliseconds
+        breakLeft = sessionConfiguration1.intervalNumber - 1;
+        breakLength = sessionConfiguration1.breakTimeInterval * 60 * 1000;
+        focus = true;
+
+        Log.i("INTERVALS LEFT","intervalsLeft: " + intervalsLeft);
+        Log.i("FOCUS INT LEFT","focusLeft: " + focusLeft);
+        Log.i("BREAK INT LEFT","breakLeft: " + breakLeft);
+
+        Log.i("FOCUS TIME","focusLength: " + focusLength);
+        Log.i("BREAK TIME","breakLength: " + breakLength);
 
 
-//        startTimer.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                timerBar.setProgress(i);
-//                countDownTimer = new CountDownTimer(5000, 1000) {
-//                    @Override
-//                    public void onTick(long l) {
-//                            timerText.setText("00:00:"+ l/1000);
-////                        Log.i("L", "l: " + l);
-////                        Log.v("Log_tag", "Tick of Progress" + i + l);
-//                            i++;
-//                            timerBar.setProgress((int) i * 100 / (5000 / 1000));
-//                    }
-//
-//                    @Override
-//                    public void onFinish() {
-//                        //Do what you want
-//                        timerText.setText("done");
-//                        i++;
-//                        timerBar.setProgress(100);
-//                    }
-//                };
-//                countDownTimer.start();
+
+        startTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setTimer(focusLength);
+                Log.i("START TIMER","I came to start timer");
+            }
+        });
+
+//        boolean focus = true;
+        //idk if focus changes to false at all
+
+        //TODO make it asynchronis
+//        for(int j = 1; j < sessionConfiguration1.intervalNumber * 2; j++){
+//            if(focus){
+//                setTimer(sessionConfiguration1.focusTimeInterval * 60 * 1000);
+//                focus = false;
+//                //TODO after every completed focus, update the database with more focus time, also only add the session after first completed focus
+//            } else if (!focus){
+//                setTimer(sessionConfiguration1.breakTimeInterval * 60 * 1000);
+//                focus = true;
 //            }
-//        });
+//        }
 
 
+    }
+
+
+    private void setTimer(int timeLength) {
+
+//        int timeLengthUnchanged = timeLength;
+//        timerBar.setProgress(i); //i = 0
+
+        Log.i("SET TIMER","I came to before setting up the countdown timer, this is how long: "+ timeLength);
+
+        countDownTimer = new CountDownTimer(timeLength, 1000) {
+
+            @Override
+            public void onTick(long l) {
+//                timerText.setText("00:00:" + l / 1000);
+
+                long hour = (l / 3600000) % 24;
+                long min = (l / 60000) % 60;
+                long sec = (l / 1000) % 60;
+
+                timerText.setText(hour + ":" + min + ":" + sec);
+                Log.i("ON TICK","I came to start displaying: "+ hour + "h");
+                Log.i("ON TICK","I came to start displaying: "+ min + "m");
+                Log.i("ON TICK","I came to start displaying: "+ sec + "s");
+
+//                i++;
+//                timerBar.setProgress((int) i * 100 / (timeLengthUnchanged / 1000));
+            }
+
+            @Override
+            public void onFinish() {
+                if (intervalsLeft > 0) {
+                    if (focus) {
+                        Log.i("FINISH","Focus is set to : "+ focus);
+                        focus = false;
+                        Log.i("FINISH","Focus is set to : "+ focus);
+                        Log.i("FINISH","This is how many focses are left before -- : "+ focusLeft);
+                        focusLeft--;
+                        Log.i("FINISH","This is how many focses are left after -- : "+ focusLeft);
+                        Log.i("FINISH","This is how many intervals are left before -- : "+ intervalsLeft);
+                        intervalsLeft--;
+                        Log.i("FINISH","This is how many intervals are left after -- : "+ intervalsLeft);
+                        setTimer(breakLength);
+                    } else {
+                        Log.i("FINISH","This is how many breaks are left before -- : "+ breakLeft);
+                        breakLeft--;
+                        Log.i("FINISH","This is how many breaks are left after -- : "+ breakLeft);
+                        setTimer(focusLength);
+                    }
+                }
+
+                timerText.setText("Good job!");
+                //Do what you want
+
+//                i++;
+//                timerBar.setProgress(100);
+            }
+        };
+        countDownTimer.start();
     }
 }

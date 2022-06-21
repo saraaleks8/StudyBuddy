@@ -18,9 +18,7 @@ class SessionConfiguration {
     // Declaring a variable of type String
 
     public String taskType;
-    public int intervalNumber, lengthHours, lengthMinutes;
-    public String focusTimeInfo;
-    public String breakTimeInfo;
+    public int intervalNumber, lengthHours, lengthMinutes, focusTimeInterval, breakTimeInterval;
 
     // Constructor
     // Here we will be creating private constructor
@@ -29,14 +27,14 @@ class SessionConfiguration {
 
     }
 
-    public void init(String taskType, int intervalNumber, int lengthHours, int lengthMinutes, String focusTimeInfo, String breakTimeInfo)
+    public void init(String taskType, int intervalNumber, int lengthHours, int lengthMinutes, int focusTimeInterval, int breakTimeInterval)
     {
         this.taskType = taskType;
         this.intervalNumber = intervalNumber;
         this.lengthHours = lengthHours;
         this.lengthMinutes = lengthMinutes;
-        this.focusTimeInfo = focusTimeInfo;
-        this.breakTimeInfo = breakTimeInfo;
+        this.focusTimeInterval = focusTimeInterval;
+        this.breakTimeInterval = breakTimeInterval;
     }
 
     // Static method
