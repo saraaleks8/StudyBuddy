@@ -72,11 +72,10 @@ public class ProfileFragment extends Fragment {
 
                 if(userProfile != null){
                     String name = userProfile.getName();
-                    String surname = userProfile.getSurname();
                     String email = userProfile.getEmail();
                     String profession = userProfile.getProfession();
 
-                    nameTextView.setText(name + " " + surname);
+                    nameTextView.setText(name);
                     emailTextView.setText(email);
                     professionTextView.setText(profession);
                 }

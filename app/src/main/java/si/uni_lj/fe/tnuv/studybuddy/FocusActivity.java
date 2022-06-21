@@ -17,6 +17,7 @@ public class FocusActivity extends AppCompatActivity {
 
     ProfileFragment profileFragment= new ProfileFragment();
     FocusFragment focusFragment = new FocusFragment();
+    HistoryFragment historyFragment = new HistoryFragment();
 
 
     @Override
@@ -35,6 +36,9 @@ public class FocusActivity extends AppCompatActivity {
                     break;
                 case R.id.focusFragment:
                     changeFragment(focusFragment);
+                    break;
+                case R.id.historyFragment:
+                    changeFragment(historyFragment);
                     break;
             }
             return true;
