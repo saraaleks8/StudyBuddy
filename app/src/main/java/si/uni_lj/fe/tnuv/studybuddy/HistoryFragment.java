@@ -31,6 +31,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class HistoryFragment extends Fragment {
 
@@ -52,44 +53,27 @@ public class HistoryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        /*recyclerView = view.findViewById(R.id.sessionsList);
+        recyclerView = view.findViewById(R.id.sessionsList);
         user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
         dbSessions = FirebaseDatabase.getInstance().getReference().child("Users").child(userID).child("sessions");
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true); //?
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         list = new ArrayList<>();
-        myAdapter = new MyAdapter(getContext(), list);
+        myAdapter = new MyAdapter(getContext());
         recyclerView.setAdapter(myAdapter);
 
-
-        final TextView labelTextView = (TextView) view.findViewById(R.id.tvLabel);
-        final TextView focusTimeTextView = (TextView) view.findViewById(R.id.tvFocusTime);
-        final TextView intervalsTextView = (TextView) view.findViewById(R.id.tvIntervals);
 
         dbSessions.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot postSnapshot: snapshot.getChildren()){
-                    String sessionID = postSnapshot.getKey();
-
-                    dbSessions.child(sessionID).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                                Sessions session = dataSnapshot.getValue(Sessions.class);
-                                list.add(session);
-                            }
-
-                            myAdapter.notifyDataSetChanged();
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                        }
-                    });
+                ArrayList<HashMap<String , Object>> sessions = new ArrayList<>(((HashMap<String, HashMap<String,Object>>)snapshot.getValue()).values());
+                for(HashMap<String, Object> entry: sessions){
+                    list.add(new Sessions((long)entry.get("intervals"), (long)entry.get("focusTime"), (String)entry.get("type"), (long)entry.get("time")));
                 }
+
+                myAdapter.refreshItems(list);
             }
 
             @Override
@@ -97,7 +81,7 @@ public class HistoryFragment extends Fragment {
                 //Toast.makeText(ProfileFragment.this, "Something wrong happened.", Toast.LENGTH_LONG).show();
                 throw error.toException();
             }
-        }); */
+        });
     }
 
 

@@ -9,21 +9,20 @@ import java.util.UUID;
 public class Sessions {
 
 //    private static UUID id;
-    private Integer intervals, focusTime;
     private String type;
-    private long time;
+    private long time,intervals, focusTime;
 
     public Sessions (){
     }
 
-    public Sessions(Integer intervals, Integer focusTime, String type, long time){
+    public Sessions(long intervals, long focusTime, String type, long time){
         this.intervals = intervals;
         this.focusTime = focusTime;
         this.type = type;
         this.time = time;
     }
 
-    public Number getIntervals(){
+    public long getIntervals(){
         return intervals;
     }
 
@@ -31,7 +30,7 @@ public class Sessions {
         this.intervals = intervals;
     }
 
-    public Number getFocusTime(){
+    public long getFocusTime(){
         return focusTime;
     }
 

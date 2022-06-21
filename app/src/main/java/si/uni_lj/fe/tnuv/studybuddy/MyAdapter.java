@@ -10,19 +10,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<Sessions> list;
+    ArrayList<Sessions> list = new ArrayList<>();
 
-    public MyAdapter(Context context, ArrayList<Sessions> list) {
+    public MyAdapter(Context context) {
         this.context = context;
-        this.list = list;
     }
 
     public MyAdapter(HistoryFragment context) {
 
+    }
+
+    public void refreshItems(ArrayList<Sessions> list){
+        this.list = list;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -36,8 +41,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Sessions session = list.get(position);
         holder.label.setText(session.getType());
-        holder.label.setText((Integer) session.getFocusTime());
-        holder.label.setText((Integer) session.getIntervals());
+        holder.focusTime.setText(""+ session.getFocusTime());
+        holder.intervals.setText(""+ session.getIntervals());
     }
 
     @Override
@@ -52,9 +57,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            label = itemView.findViewById(R.id.tvLabel);
-            focusTime = itemView.findViewById(R.id.tvFocusTime);
-            intervals = itemView.findViewById(R.id.tvIntervals);
+            label = itemView.findViewById(R.id.type);
+            focusTime = itemView.findViewById(R.id.focusTime);
+            intervals = itemView.findViewById(R.id.intervals);
         }
     }
 }

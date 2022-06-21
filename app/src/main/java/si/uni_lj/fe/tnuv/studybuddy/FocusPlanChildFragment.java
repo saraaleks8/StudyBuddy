@@ -66,15 +66,6 @@ public class FocusPlanChildFragment extends Fragment {
         breakLength = sessionConfiguration1.breakTimeInterval * 60 * 1000;
         focus = true;
 
-        Log.i("INTERVALS LEFT","intervalsLeft: " + intervalsLeft);
-        Log.i("FOCUS INT LEFT","focusLeft: " + focusLeft);
-        Log.i("BREAK INT LEFT","breakLeft: " + breakLeft);
-
-        Log.i("FOCUS TIME","focusLength: " + focusLength);
-        Log.i("BREAK TIME","breakLength: " + breakLength);
-
-
-
         startTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,23 +73,6 @@ public class FocusPlanChildFragment extends Fragment {
                 Log.i("START TIMER","I came to start timer");
             }
         });
-
-//        boolean focus = true;
-        //idk if focus changes to false at all
-
-        //TODO make it asynchronis
-//        for(int j = 1; j < sessionConfiguration1.intervalNumber * 2; j++){
-//            if(focus){
-//                setTimer(sessionConfiguration1.focusTimeInterval * 60 * 1000);
-//                focus = false;
-//                //TODO after every completed focus, update the database with more focus time, also only add the session after first completed focus
-//            } else if (!focus){
-//                setTimer(sessionConfiguration1.breakTimeInterval * 60 * 1000);
-//                focus = true;
-//            }
-//        }
-
-
     }
 
 
@@ -119,10 +93,7 @@ public class FocusPlanChildFragment extends Fragment {
                 long min = (l / 60000) % 60;
                 long sec = (l / 1000) % 60;
 
-                timerText.setText(hour + ":" + min + ":" + sec);
-                Log.i("ON TICK","I came to start displaying: "+ hour + "h");
-                Log.i("ON TICK","I came to start displaying: "+ min + "m");
-                Log.i("ON TICK","I came to start displaying: "+ sec + "s");
+                timerText.setText(modifyNumber(hour) + ":" + modifyNumber(min) + ":" + modifyNumber(sec));
 
 //                i++;
 //                timerBar.setProgress((int) i * 100 / (timeLengthUnchanged / 1000));
@@ -158,5 +129,12 @@ public class FocusPlanChildFragment extends Fragment {
             }
         };
         countDownTimer.start();
+    }
+
+    private String modifyNumber(long number){
+        if (number < 10){
+            return "0"+number;
+        }
+        return number+"";
     }
 }
