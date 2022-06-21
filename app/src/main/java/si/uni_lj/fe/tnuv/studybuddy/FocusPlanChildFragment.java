@@ -34,6 +34,10 @@ public class FocusPlanChildFragment extends Fragment {
     int breakLeft;
     int breakLength;
     boolean focus;
+    boolean timerPlayed = false;
+    boolean timerIsPaused = false;
+    boolean timerIsStopped = false;
+    int paused = -1;
 
 
     @Override
@@ -59,6 +63,8 @@ public class FocusPlanChildFragment extends Fragment {
         SessionConfiguration sessionConfiguration1 = SessionConfiguration.getInstance();
         Log.i("SC", "sessionConfiguration1 " + sessionConfiguration1.taskType);
 
+        //TODO text view add type of task
+
         intervalsLeft = sessionConfiguration1.intervalNumber;
         focusLeft = sessionConfiguration1.intervalNumber;
         focusLength = sessionConfiguration1.focusTimeInterval * 60 * 1000; //*1000 cuz milliseconds
@@ -66,11 +72,60 @@ public class FocusPlanChildFragment extends Fragment {
         breakLength = sessionConfiguration1.breakTimeInterval * 60 * 1000;
         focus = true;
 
+        pauseTimer.setEnabled(false);
+        stopTimer.setEnabled(false);
+        timerBar.setProgress(i);
+
         startTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setTimer(focusLength);
+                if(timerIsPaused){
+                    timerIsPaused = false;
+                    Log.i("PAUSED","paused on (in play): "+paused);
+                    setTimer(paused);
+                } else {
+                    setTimer(focusLength);
+                }
+                startTimer.setEnabled(false);
+                pauseTimer.setEnabled(true);
+                stopTimer.setEnabled(true);
                 Log.i("START TIMER","I came to start timer");
+            }
+        });
+
+        pauseTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pauseTimer.setEnabled(false);
+                startTimer.setEnabled(true);
+                stopTimer.setEnabled(false);
+                timerIsPaused = true;
+                int hours = minutesPaused(timerText.getText().toString().trim(), 0, 2);
+                int minutes = minutesPaused(timerText.getText().toString().trim(), 3, 5);
+                int seconds = minutesPaused(timerText.getText().toString().trim(), 6, 8);
+                paused = 0;
+                if(hours > 0){
+                    paused += hours * 3600000;
+                }
+                if(minutes > 0){
+                    paused += minutes * 60000;
+                }
+                if(seconds > 0){
+                    paused += seconds * 1000;
+                }
+                Log.i("PAUSED","paused on (in pause): "+paused);
+            countDownTimer.cancel();
+            }
+        });
+
+        stopTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                timerIsStopped = true;
+                startTimer.setEnabled(false);
+                pauseTimer.setEnabled(false);
+                countDownTimer.cancel();
+                timerText.setText("00:00:00");
             }
         });
     }
@@ -78,8 +133,14 @@ public class FocusPlanChildFragment extends Fragment {
 
     private void setTimer(int timeLength) {
 
-//        int timeLengthUnchanged = timeLength;
-//        timerBar.setProgress(i); //i = 0
+        int timeLengthUnchanged;
+        if(focus){
+            timeLengthUnchanged = focusLength;
+        } else {
+            timeLengthUnchanged = breakLength;
+        }
+
+        //i = 0
 
         Log.i("SET TIMER","I came to before setting up the countdown timer, this is how long: "+ timeLength);
 
@@ -95,14 +156,14 @@ public class FocusPlanChildFragment extends Fragment {
 
                 timerText.setText(modifyNumber(hour) + ":" + modifyNumber(min) + ":" + modifyNumber(sec));
 
-//                i++;
-//                timerBar.setProgress((int) i * 100 / (timeLengthUnchanged / 1000));
+                i++;
+                timerBar.setProgress((int) i * 100 / (timeLengthUnchanged / 1000));
             }
 
             @Override
             public void onFinish() {
                 if (intervalsLeft > 0) {
-                    if (focus) {
+                    if (focus && focusLeft>0) {
                         Log.i("FINISH","Focus is set to : "+ focus);
                         focus = false;
                         Log.i("FINISH","Focus is set to : "+ focus);
@@ -112,18 +173,20 @@ public class FocusPlanChildFragment extends Fragment {
                         Log.i("FINISH","This is how many intervals are left before -- : "+ intervalsLeft);
                         intervalsLeft--;
                         Log.i("FINISH","This is how many intervals are left after -- : "+ intervalsLeft);
+                        i = 0;
                         setTimer(breakLength);
                     } else {
                         Log.i("FINISH","This is how many breaks are left before -- : "+ breakLeft);
+                        focus = true;
                         breakLeft--;
                         Log.i("FINISH","This is how many breaks are left after -- : "+ breakLeft);
+                        i = 0;
                         setTimer(focusLength);
                     }
                 }
 
                 timerText.setText("Good job!");
                 //Do what you want
-
 //                i++;
 //                timerBar.setProgress(100);
             }
@@ -136,5 +199,10 @@ public class FocusPlanChildFragment extends Fragment {
             return "0"+number;
         }
         return number+"";
+    }
+
+    private int minutesPaused(String str, int first, int last){
+        String time =  str.length() < 2 ? str : str.substring(first, last);
+        return Integer.parseInt(time);
     }
 }
