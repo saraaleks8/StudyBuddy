@@ -57,7 +57,6 @@ public class HistoryFragment extends Fragment {
         user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
         dbSessions = FirebaseDatabase.getInstance().getReference().child("Users").child(userID).child("sessions");
-        recyclerView.setHasFixedSize(true); //?
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         list = new ArrayList<>();
@@ -78,7 +77,6 @@ public class HistoryFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                //Toast.makeText(ProfileFragment.this, "Something wrong happened.", Toast.LENGTH_LONG).show();
                 throw error.toException();
             }
         });

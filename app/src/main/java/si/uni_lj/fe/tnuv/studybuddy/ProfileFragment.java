@@ -51,7 +51,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                //startActivity(new Intent(FocusActivity.this, MainActivity.class));
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
@@ -83,7 +82,6 @@ public class ProfileFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                //Toast.makeText(ProfileFragment.this, "Something wrong happened.", Toast.LENGTH_LONG).show();
             }
         });
 
