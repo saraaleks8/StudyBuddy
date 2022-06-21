@@ -18,6 +18,7 @@ public class FocusActivity extends AppCompatActivity implements FocusNavigation 
 
     ProfileFragment profileFragment= new ProfileFragment();
     FocusFragment focusFragment = new FocusFragment();
+    HistoryFragment historyFragment = new HistoryFragment();
 
 
     @Override
@@ -36,6 +37,9 @@ public class FocusActivity extends AppCompatActivity implements FocusNavigation 
                     break;
                 case R.id.focusFragment:
                     changeFragment(focusFragment);
+                    break;
+                case R.id.historyFragment:
+                    changeFragment(historyFragment);
                     break;
             }
             return true;
