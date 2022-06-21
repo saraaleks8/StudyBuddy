@@ -35,16 +35,5 @@
         app:layout_constraintTop_toBottomOf="@+id/history"
         />
 
-    <Button
-        android:id="@+id/more"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/more"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sessionsList" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
