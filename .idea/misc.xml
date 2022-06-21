@@ -6,27 +6,15 @@
         <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddy/app/src/main/res/layout/activity_main.xml" value="0.259375" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddy/app/src/main/res/layout/activity_register_user.xml" value="0.259375" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/drawable/bottom_sheet_spinner_background.xml" value="0.1845" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/drawable/card_bg_bottom.xml" value="0.1" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/drawable/card_bg_bottom_left.xml" value="0.1" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/drawable/card_bg_bottom_right.xml" value="0.19" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/drawable/card_bg_full.xml" value="0.19" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/drawable/card_bg_left.xml" value="0.19" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/drawable/card_bg_right.xml" value="0.19" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/drawable/card_bg_top.xml" value="0.1" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/drawable/circle.xml" value="0.1235" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/drawable/ic_baseline_pause_24.xml" value="0.1235" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.1235" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/drawable/ic_baseline_stop_24.xml" value="0.1235" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/layout/activity_focus.xml" value="0.11388888888888889" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/layout/activity_main.xml" value="0.11388888888888889" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/layout/activity_register_user.xml" value="0.11388888888888889" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/layout/bottom_sheet_spinner_background.xml" value="0.259375" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/layout/child_fragment_break_plan.xml" value="0.11388888888888889" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/layout/child_fragment_focus.xml" value="0.176" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/layout/child_fragment_new_session.xml" value="0.2" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/layout/child_fragment_focus.xml" value="0.1" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/layout/child_fragment_new_session.xml" value="0.1" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/layout/fragment_focus.xml" value="0.17760416666666667" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/layout/fragment_history.xml" value="0.176" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/layout/fragment_profile.xml" value="0.11388888888888889" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/layout/layout_bottom_sheet.xml" value="0.259375" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/StudyBuddyProject/app/src/main/res/layout/sessions_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_focus.xml" value="0.23125" />

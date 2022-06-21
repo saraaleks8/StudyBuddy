@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //registerButton, change it to the name of the "register" in sign in
         register = (TextView) findViewById(R.id.register);
         register.setOnClickListener(this);
 
@@ -98,19 +97,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                     if(user.isEmailVerified()){
-                        //redirect to user profile
-                        //startActivity(new Intent(MainActivity.this, FocusActivity.class));
                         startActivity(new Intent(MainActivity.this, FocusActivity.class));
                     }else{
                         user.sendEmailVerification();
                         Toast.makeText(MainActivity.this, "Check your email to verify your account!", Toast.LENGTH_LONG).show();
                     }
-
-                /*if(task.isSuccessful()){
-                    //redirect to user profile
-                    startActivity(new Intent(MainActivity.this, FocusActivity.class)); */
-
-
                 }else{
                     Toast.makeText(MainActivity.this, "Failed to login! Please check your credentials.", Toast.LENGTH_LONG).show();
                 }
